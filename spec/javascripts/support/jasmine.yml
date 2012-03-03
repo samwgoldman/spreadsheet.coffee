@@ -1,0 +1,8 @@
+src_files:
+- "**/*.*"
+spec_files:
+- "**/*[Ss]pec.*"
+stylesheets:
+  - stylesheets/*.css
+src_dir: public/javascripts
+spec_dir: spec/javascripts
