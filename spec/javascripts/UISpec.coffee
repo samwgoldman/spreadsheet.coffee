@@ -35,3 +35,14 @@ describe "UI", ->
     parent.appendTo(window.document.body)
     new UI(table).run()
     expect(table.height()).toEqual(70)
+
+  it "should update the current cell when the expression changes", ->
+    form = $("<form name='expressionEditor'><input name='expression' value='Hello, World!'>")
+    table = $("<table><tr><td>")
+    td = table.find("td")
+    ui = new UI(table, form)
+    ui.run()
+    td.click()
+    form.submit (event) -> event.preventDefault() # avoid looping jasmine if this test is broken
+    form.submit()
+    expect(td.text()).toEqual("Hello, World!")

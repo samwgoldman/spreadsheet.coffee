@@ -1,9 +1,18 @@
 class window.UI
-  constructor: (@table) ->
+  constructor: (@table, @form) ->
     @parent = @table.parent()
 
   run: =>
     @handleResize()
+
+    @table.click (event) =>
+      if event.target.tagName is "TD"
+        @currentCell = $(event.target)
+
+    if @form
+      @form.submit (event) =>
+        @currentCell.text(event.target.elements["expression"].value)
+        event.preventDefault()
 
   # @private
   handleResize: =>
