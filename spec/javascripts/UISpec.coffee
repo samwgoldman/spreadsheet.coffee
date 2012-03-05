@@ -25,3 +25,13 @@ describe "UI", ->
     parent.width(800).height(600)
     waitsFor (-> table.width() is 800 and table.height() is 600),
       "the UI to detect the resize", 100 # ms
+
+  it "makes room for its siblings", ->
+    parent = $("<div>").width(100).height(100)
+    table = $("<table>")
+    before = $("<div>").height(10).css("marginBottom", 5)
+    after = $("<div>").height(10).css("paddingTop", 5)
+    parent.append(before, table, after)
+    parent.appendTo(window.document.body)
+    new UI(table).run()
+    expect(table.height()).toEqual(70)

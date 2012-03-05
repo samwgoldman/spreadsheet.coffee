@@ -21,4 +21,11 @@ class window.UI
       height = $(window).height() - margin - padding
     else
       height = @parent.innerHeight(true)
+
+    siblings = _.reject(@table.siblings(), (sibling) -> $(sibling).is("script"))
+    siblingHeight = _.reduce siblings,
+      (height, sibling) -> height + $(sibling).outerHeight(true),
+      0
+    height -= siblingHeight
+
     [width, height]
