@@ -1,4 +1,4 @@
-class window.Equation
+class window.Expression
   constructor: (@sheet) ->
 
   solve: (expression) =>
