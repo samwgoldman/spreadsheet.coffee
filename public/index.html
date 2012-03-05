@@ -2,11 +2,31 @@
 <html>
 <head>
   <title>Spreadsheet</title>
+  <script type="text/javascript" src="javascripts/jquery-1.7.1.min.js"></script>
+  <script type="text/javascript" src="javascripts/underscore-min.js"></script>
   <script type="text/javascript" src="spreadsheet.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      var table = $("#spreadsheet");
+      var form = $(document.forms["expressionEditor"])
+      new UI(table, form).run();
+    })
+  </script>
+  <link rel="stylesheet" href="stylesheets/screen.css" />
 </head>
 <body>
 
-<p>Hello, World!</p>
+<form name="expressionEditor">
+  <label for="expression">Expression:</label>
+  <input id="expression" name="expression" type="text" />
+  <input type="submit" value="Update" />
+</form>
+
+<table id="spreadsheet">
+  <tr><td class="A1"></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td></td><td></td><td></td><td></td><td></td></tr>
+  <tr><td></td><td></td><td></td><td></td><td></td></tr>
+</table>
 
 </body>
 </html>
