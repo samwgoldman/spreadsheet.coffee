@@ -1,6 +1,7 @@
 class window.UI
   constructor: (@table, @form) ->
     @parent = @table.parent()
+    @sheet = new Sheet()
 
   run: =>
     @handleResize()
@@ -11,7 +12,9 @@ class window.UI
 
     if @form
       @form.submit (event) =>
-        @currentCell.text(event.target.elements["expression"].value)
+        expression = event.target.elements["expression"].value
+        value = new Expression(@sheet).solve(expression)
+        @currentCell.text(value)
         event.preventDefault()
 
   # @private
