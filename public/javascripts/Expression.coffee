@@ -3,4 +3,8 @@ class window.Expression
 
   solve: (expression) =>
     data = @sheet.data
-    eval("with (data) { " + expression + "}")
+    try
+      value = eval("with (data) { " + expression + "}")
+    catch error
+      value = expression
+    value
