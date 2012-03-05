@@ -14,6 +14,7 @@ class window.UI
       @form.submit (event) =>
         expression = event.target.elements["expression"].value
         value = new Expression(@sheet).solve(expression)
+        @sheet.setCell(@currentCell.attr("class"), value)
         @currentCell.text(value)
         event.preventDefault()
 
