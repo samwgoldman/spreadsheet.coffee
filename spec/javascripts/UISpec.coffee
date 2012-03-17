@@ -38,7 +38,7 @@ describe "UI", ->
 
   it "should update the current cell when the expression changes", ->
     form = $("<form name='expressionEditor'><input name='expression' value='Hello, World!'>")
-    table = $("<table><tr><td>")
+    table = $("<table><tr><td class='A1'>")
     td = table.find("td")
     ui = new UI(table, form)
     ui.run()
